@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programmering C Portfolio - Kristoffer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- SKIFT FARVE-TEMA OG LAYOUT I STYLE.CSS -->
+
+  <!-- ================= NAVIGATIONSBAR ================= -->
+  <nav class="navbar">
+    <div class="logo">Kristoffer</div>
+    <ul class="nav-links">
+      <li><a href="#om-mig">Om Mig</a></li>
+      <li><a href="#projekter">Projekter</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- ================= HERO / INTRODUKTION ================= -->
+  <header class="hero">
+    <h1>Velkommen til min dokumentationsside</h1>
+    <p>Programmering C | HTX</p>
+  </header>
+
+  <main class="container">
+
+    <!-- ================= BLOK: OM MIG ================= -->
+    <section id="om-mig" class="card">
+      <h2>Præsentation af mig selv</h2>
+      <div class="profile-grid">
+        <div class="profile-text">
+          <p>Siden jeg har været helt lille har jeg været intræseret i spil. Det gik ikke længe for det ikke længere var nok at spille andre spil, jeg ville lave mine ejne. Så i en alder af 7 går jeg i gang med at lære at programmere.</p>
+          <p><strong>Mine foretrukne sprog/værktøjer:</strong> HTML, CSS, Rust, Java</p>
+        </div>
+      </div>
+    </section>
+
+    <h2 id="projekter" class="section-title">Dokumentation af Forløb & Projekter</h2>
+
+    <!-- ================= MODULÆR BLOK: PROJEKT 1 ================= -->
+    <!-- Eleverne kopierer blot denne <section> til nye forløb -->
+    <article class="card project-block">
+      <div class="project-header">
+        <span class="badge">Forløb 1</span>
+        <h3>Introduktion til Programmering & Algoritmer</h3>
+        <span class="date">August 2026</span>
+      </div>
+
+      <div class="project-content">
+        <h4>Projektbeskrivelse</h4>
+        <p>Vi starter snart med et project, men hvad der er, er jeg ikke sikker på endnu.</p>
+
+        <h4>Kildekode / Resultat</h4>
+        <pre><code>// Eksempel på koden der blev skrevet
+fn main() {
+  println("Help me");
+}</code></pre>
+
+        <h4>Refleksion & Læring</h4>
+        <ul>
+          <li>Hvad gik godt undervejs?</li>
+          <li>Hvilke udfordringer stødte du på, og hvordan blev de løst?</li>
+        </ul>
+
+        <a href="https://github.com/dit-brugernavn/dit-projekt" target="_blank" class="btn">Se kildekode på GitHub</a>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer id="kontakt">
+    <p>Dokumentationssite udarbejdet i Programmering C &bull; HTX</p>
+  </footer>
+
+</body>
+</html>
