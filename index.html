@@ -45,30 +45,155 @@
     <!-- Eleverne kopierer blot denne <section> til nye forløb -->
     <article class="card project-block">
       <div class="project-header">
-        <span class="badge">Forløb 1</span>
-        <h3>Introduktion til Programmering & Algoritmer</h3>
-        <span class="date">August 2026</span>
+        <h3>Programering ud fra flowchart og psudokode</h3>
+        <span class="date">Obtober 2026</span>
       </div>
 
       <div class="project-content">
         <h4>Projektbeskrivelse</h4>
-        <p>Vi starter snart med et project, men hvad der er, er jeg ikke sikker på endnu.</p>
+        <p>Vi fik udlevered en bunke paiper der hvade skildt et program fra hinnanden og det var vores opgave at sætte stykkerne sammen igen. Programmet viste sig at være et form for spil der afmålte ens reaktionstid.</p>
 
         <h4>Kildekode / Resultat</h4>
-        <pre><code>// Eksempel på koden der blev skrevet
-fn main() {
-  println("Help me");
-}</code></pre>
-  
-        <p>Jeg blev færdig med alle opgaver :)</p>
+        <pre><code>
+import time
+from machine import Pin
+import random
 
+redLed = Pin(7, Pin.OUT)
+greenLed = Pin(6, Pin.OUT)
+blueLed = Pin(5, Pin.OUT)
+
+redButton = Pin(41, Pin.IN, Pin.PULL_UP)
+greenButton = Pin(42, Pin.IN, Pin.PULL_UP)
+blueButton = Pin(2, Pin.IN, Pin.PULL_UP)
+
+LEDlist = [redLed, greenLed, blueLed]
+
+def ValgLed():
+    nrLed = random.randint(0, 2)
+    return nrLed
+
+def ButtonPressed():
+    while True:
+        redButtonStatus = Pin.value(redButton)
+        greenButtonStatus = Pin.value(greenButton)
+        blueButtonStatus = Pin.value(blueButton)
+
+        if redButtonStatus == 0:
+            return 0
+        if greenButtonStatus == 0:
+            return 1
+        if blueButtonStatus == 0:
+            return 2
+
+nrLed = ValgLed()
+Pin.value(LEDlist[nrLed], 1)
+startTid = time.ticks_ms()
+knap = ButtonPressed()
+print("dd")
+
+if knap == nrLed:
+    slutTid = time.ticks_ms()
+    print(slutTid - startTid)
+else:
+    print("forkert")</code></pre>
         <h4>Refleksion & Læring</h4>
         <ul>
           <li>Hvad gik godt undervejs?</li>
-          <li>Hvilke udfordringer stødte du på, og hvordan blev de løst?</li>
+          <p>Det var overræskene tidskrævene at sætte et program sammen af småstykker, i stedet for at gøre det fra bunden.</p>
         </ul>
 
-        <a href="https://github.com/dit-brugernavn/dit-projekt" target="_blank" class="btn">Se kildekode på GitHub</a>
+        <a href="https://wokwi.com/projects/478403763230588929" target="_blank" class="btn">Se kildekode på Wokwi</a>
+      </div>
+    </article>
+    <article class="card project-block">
+      <div class="project-header">
+        <h3>Rettelse af udleveret kode</h3>
+        <span class="date">November 2026</span>
+      </div>
+
+      <div class="project-content">
+        <h4>Projektbeskrivelse</h4>
+        <p>Da vi ikke havde haft programmering i et længere stykke tid, fik vi en relativt simple opgave for. Vi skulle rette et program udskrevet på papir.</p>
+
+        <h4>Kildekode / Resultat</h4>
+        <pre><code>
+from machine import Pin
+from time import sleep
+import neopixel
+
+knap = Pin(11, Pin.IN, Pin.PULL_UP)
+
+antal_led = 16
+timing_v6 = (300, 950, 700, 600)
+
+np = neopixel.NeoPixel(
+    Pin(10, Pin.OUT),
+    antal_led,
+    bpp=3,
+    timing=timing_v6
+)
+
+while True:
+    if knap.value() == 0:
+        for i in range(antal_led):
+            np[i] = (255, 0, 0)
+        np.write()
+    else:
+        np.fill((0,0,0))
+        np.write()
+    
+    sleep(0.1)
+        </code></pre>
+
+        <a href="https://wokwi.com/projects/479855793503272961" target="_blank" class="btn">Se kildekode på Wokwi</a>
+      </div>
+    </article>
+    <article class="card project-block">
+      <div class="project-header">
+        <h3>Sammensætning af kode fra stupmer, igen.</h3>
+        <span class="date">November 2026</span>
+      </div>
+
+      <div class="project-content">
+        <h4>Projektbeskrivelse</h4>
+        <p>Vi fik igen udleveret et program klippet i stykker på papir. Programmet var en form for baksensor ligesom jeg selv havde lavet tidelige i programmerings forløbet i en opgave jeg glemte at gemme.</p>
+
+        <h4>Kildekode / Resultat</h4>
+        <pre><code>
+import time
+from machine import Pin, time_pulse_us 
+
+redLed = Pin(7, Pin.OUT)
+greenLed = Pin(6, Pin.OUT)
+trig = Pin(12, Pin.OUT)
+echo = Pin(13, Pin.IN)
+
+def maalAfstand():
+    trig.value(0)
+    time.sleep_us(2)
+    trig.value(1)
+    time.sleep_us(10)
+    trig.value(0)
+
+    varighed = time_pulse_us(echo, 1, 30000)
+    afstand = varighed / 58
+    return afstand
+
+while True:
+    afstand = maalAfstand()
+    if afstand < 20:
+        redLed.value(1)
+        greenLed.value(0)
+        print("Stop!")
+    else:
+        redLed.value(0)
+        greenLed.value(1)
+        print("Fri bane!")
+    time.sleep_ms(200)
+        </code></pre>
+
+        <a href="https://wokwi.com/projects/479857655173027841" target="_blank" class="btn">Se kildekode på Wokwi</a>
       </div>
     </article>
 
